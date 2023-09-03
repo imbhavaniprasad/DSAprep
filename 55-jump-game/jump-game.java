@@ -1,16 +1,19 @@
 class Solution {
-    public boolean canReach(int i,int[] nums){
-        for(int j=0;j<i;j++){
-            if(j+nums[j]>=i) return true;
-        }
-        return false;
-    }
     public boolean canJump(int[] nums) {
         if(nums.length==1)return true;
-        for(int i=nums.length-1;i>=1;i--){
-            if(!canReach(i,nums)) return false;
+      boolean[] ans = new boolean[nums.length];
+        int target=nums.length-1;
+        for(int i=nums.length-1;i>=0;i--){
+            if(i+nums[i]>=target){
+                ans[i]=true;
+                target=i;
+            }
         }
-     
-        return true;
+        if(nums[0]>=nums.length) return true;
+        int start=nums[0];
+        while(start>0){
+            if(ans[start--]==true) return true;
+        }
+        return false;
     }
 }
