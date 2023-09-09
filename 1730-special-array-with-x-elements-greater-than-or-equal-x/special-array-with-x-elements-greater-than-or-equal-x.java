@@ -7,7 +7,6 @@ class Solution {
              if(a>=i){
 ++count;
              }
-             if(count>i) break;
          }
          if(count==i) return i;
          i++;
